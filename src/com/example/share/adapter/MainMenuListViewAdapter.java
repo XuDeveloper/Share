@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.example.share.R;
 
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,28 +12,33 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainMenuListViewAdapter extends BaseAdapter{
+public class MainMenuListViewAdapter extends BaseAdapter {
 	private List<String> contents;
 	private Context mContext;
-	public MainMenuListViewAdapter(Context mContext, List<String> contents){
+
+	public MainMenuListViewAdapter(Context mContext, List<String> contents) {
 		this.mContext = mContext;
 		this.contents = contents;
 	}
+
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
 		return contents.size();
 	}
+
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
 		return contents.get(position);
 	}
+
 	@Override
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
 		return position;
 	}
+
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
@@ -56,9 +60,6 @@ public class MainMenuListViewAdapter extends BaseAdapter{
 		return view;
 	}
 }
-
-
-
 
 // 根据User里面的属性进行添加
 class Viewgroup {
