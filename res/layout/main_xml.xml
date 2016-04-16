@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10" >
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+		<RelativeLayout 
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent">
+		    <ImageButton 
+		        android:id="@+id/main_sidebar_bt"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:background="@drawable/sidebar_bt"
+		        android:layout_centerVertical="true"
+		        android:layout_marginLeft="32px"/>
+
+		    <ImageView
+		        android:id="@+id/main_title"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignBottom="@id/main_sidebar_bt"
+		        android:layout_alignTop="@id/main_sidebar_bt"
+		        android:layout_toLeftOf="@+id/main_search_bt"
+		        android:layout_toRightOf="@id/main_sidebar_bt"
+		        android:scaleType="fitStart"
+		        android:src="@drawable/title"
+		        android:layout_marginLeft="32px"/>
+
+		    <ImageButton 
+		        android:id="@+id/main_search_bt"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:background="@drawable/search_bt"
+		        android:layout_centerVertical="true"
+		        android:layout_alignParentRight="true"
+		        android:layout_marginRight="32px"/>
+		</RelativeLayout>
+    </LinearLayout>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:weightSum="3">
+
+
+		    <ImageView 
+		        android:id="@+id/main_homepage_iv"
+		        android:layout_width="0dp"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1"
+		        android:src="@drawable/homepage_checked"
+		        android:scaleType="centerInside"/>
+		    <ImageView 
+		        android:id="@+id/main_classification_iv"
+		        android:layout_width="0dp"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1"
+		        android:src="@drawable/classification_unchecked"
+		        android:scaleType="centerInside"/>
+		    <ImageView 
+		        android:id="@+id/main_message_iv"
+		        android:layout_width="0dp"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1"
+		        android:src="@drawable/message_unchecked"
+		        android:scaleType="centerInside"/>
+
+		
+        
+    </LinearLayout>
+    <ImageView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cursor"
+        android:scaleType="matrix"
+        android:id="@+id/main_cursor"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_viewpager"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="7.8"
+        android:background="#ffffff"
+        android:flipInterval="30"
+        android:persistentDrawingCache="animation" />
+    
+
+</LinearLayout>

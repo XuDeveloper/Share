@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chat_from_msg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/user_logo_from"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="left|bottom"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/user_logo" />
+
+    <TextView
+        android:id="@+id/from_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center|left"
+        android:background="@drawable/chat_from"
+        android:text="我好想复制一大段话然后就不管这里写什么了"
+        android:textSize="16sp" />
+
+</LinearLayout>

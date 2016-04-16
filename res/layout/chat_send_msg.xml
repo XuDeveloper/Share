@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chat_send_msg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="right"
+    android:orientation="horizontal" >
+
+    <!-- 字体与背景框margin = 16dp -->
+    
+    <TextView
+        android:id="@+id/send_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/chat_send"
+        android:layout_marginLeft="25dp"
+        android:gravity="center_vertical"
+        android:text="我好想复制一大段话然后就不管这里写什么了"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/user_logo_send"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="right|bottom"
+        android:src="@drawable/user_logo" />
+
+</LinearLayout>
