@@ -16,5 +16,9 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    <style name="anim_menu_inandout">
+        <item name="android:windowEnterAnimation">@anim/main_menu_in_xml</item>
+        <item name="android:windowExitAnimation">@anim/main_menu_out_xml</item>
+    </style>
 
 </resources>

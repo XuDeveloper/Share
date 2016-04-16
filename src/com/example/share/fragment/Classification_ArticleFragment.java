@@ -1,5 +1,6 @@
 package com.example.share.fragment;
 
+import java.util.ArrayList;
 
 import com.example.share.R;
 import com.example.share.adapter.HomePageListViewAdapter;
@@ -15,18 +16,18 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
-public class HomePageFragment extends Fragment{
-	private ListView homePage_lv;
-	private HomePageListViewAdapter homePage_adapter;
-	@Override
+public class Classification_ArticleFragment extends Fragment{
+	private ListView classification_article_lv;
+	private FloatingActionButton classification_article_fab;
+	private HomePageListViewAdapter classification_article_adapter;
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState){
-		View rootView = inflater.inflate(R.layout.homepage_xml, container, false);
-		homePage_lv = (ListView) rootView.findViewById(R.id.main_listview);
-		homePage_adapter = new HomePageListViewAdapter(this.getActivity());
-		homePage_lv.setAdapter(homePage_adapter);
-        FloatingActionButton homePage_fab = (FloatingActionButton) rootView.findViewById(R.id.homepage_fab);
-        homePage_fab.attachToListView(homePage_lv, new ScrollDirectionListener() {
+		View rootView = inflater.inflate(R.layout.classification_article_xml, container, false);
+		classification_article_lv = (ListView)rootView.findViewById(R.id.classification_article_lv);
+		classification_article_fab = (FloatingActionButton)rootView.findViewById(R.id.classification_article_fab);
+		classification_article_adapter = new HomePageListViewAdapter(this.getActivity());
+		classification_article_lv.setAdapter(classification_article_adapter);
+		classification_article_fab.attachToListView(classification_article_lv, new ScrollDirectionListener() {
             @Override
             public void onScrollDown() {
                 Log.d("ListViewFragment", "onScrollDown()");
@@ -47,7 +48,6 @@ public class HomePageFragment extends Fragment{
                 Log.d("ListViewFragment", "onScroll()");
             }
         });
-		return rootView;
-		
+		return rootView;	
 	}
 }

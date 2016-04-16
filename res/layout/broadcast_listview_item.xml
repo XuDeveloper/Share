@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/broadcast_user_logo_ll" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+	        <ImageView 
+				android:id="@+id/broadcast_user_logo"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/user_logo_middle"
+				android:paddingLeft="10px"
+				android:paddingTop="10px"
+				android:paddingBottom="10px"/>
+			
+        </RelativeLayout>
+        <RelativeLayout 
+            android:id="@+id/broadcast_user_name_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/broadcast_user_logo_ll"
+            android:layout_alignBottom="@id/broadcast_user_logo_ll"
+            android:layout_alignTop="@id/broadcast_user_logo_ll"
+            android:layout_marginLeft="15px">
+            <TextView
+				android:id="@+id/broadcast_user_name"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:text="钟艾良"
+				android:textColor="@color/accent"
+				android:textSize="20sp" />
+        </RelativeLayout>
+
+		<TextView
+		    android:id="@+id/broadcast_content"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignLeft="@id/broadcast_user_name_ll"
+		    android:layout_below="@+id/broadcast_user_name_ll"
+		    android:layout_toLeftOf="@+id/broadcast_commentcounts"
+		    android:text="我好想复制一大段话就不管这里写什么了"
+		    android:textSize="18sp" />
+
+		<TextView 
+		    android:id="@+id/broadcast_time"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_below="@id/broadcast_content"
+		    android:text="两天前"
+		    android:textSize="10sp"
+		    android:textColor="#A2A2A2"
+			android:layout_alignParentRight="true"
+			android:paddingRight="10dp"
+			android:layout_marginTop="10px"
+			android:paddingBottom="10dp"/>
+		<TextView 
+		    android:id="@+id/broadcast_commentcounts"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="18.3w"
+		    android:textSize="10sp"
+		    android:textColor="#A2A2A2"
+		    android:layout_toLeftOf="@id/broadcast_time"
+		    android:layout_alignTop="@id/broadcast_time"
+		    android:layout_marginRight="10dp"/>
+		<ImageView 
+		    android:id="@+id/broadcast_comment_iv"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/comment_amount"
+		    android:layout_alignBottom="@id/broadcast_commentcounts"
+		    android:layout_toLeftOf="@id/broadcast_commentcounts"
+		    android:layout_marginRight="10dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

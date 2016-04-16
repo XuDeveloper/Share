@@ -2,7 +2,62 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:weightSum="9" >
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#e4e4e4"
+        android:weightSum="2">
+        <FrameLayout 
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/classfication_article_iv"
+		     	android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/tag_bg"
+		        android:layout_gravity="center"
+		         />
+		
+		    <TextView
+		        android:id="@+id/classfication_article_tv"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center"
+		        android:text="文章"
+		        android:textColor="#ffffff" />
+        </FrameLayout>
+        <FrameLayout 
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/classfication_broadcast_iv"
+		     	android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/tag_bg"
+		        android:layout_gravity="center"
+		        android:visibility="invisible" />
+		
+		    <TextView
+		        android:id="@+id/classfication_broadcast_tv"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center"
+		        android:text="广播"
+		        android:textColor="#a2a2a2" />
+        </FrameLayout>
+        
+    </LinearLayout>
+	<FrameLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="8"
+	    android:id="@+id/classification_fragment"></FrameLayout>
+
     
 
 </LinearLayout>

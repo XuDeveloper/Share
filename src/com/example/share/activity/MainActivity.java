@@ -8,13 +8,20 @@ import java.util.List;
 
 import com.example.share.R;
 import com.example.share.adapter.MainFragmentAdapter;
+import com.example.share.adapter.MainMenuListViewAdapter;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.melnykov.fab.*;
 
 
 import com.example.share.fragment.*;
+
+import android.app.SearchManager;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.PixelFormat;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -24,13 +31,21 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.PopupMenu;
+import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class MainActivity extends FragmentActivity{
+public class MainActivity extends FragmentActivity implements OnClickListener, OnDismissListener, OnItemClickListener{
 	private ViewPager main_vp;
 	private List<Fragment> fragments;
 	private MainFragmentAdapter mainFragment_adapter;
@@ -38,36 +53,64 @@ public class MainActivity extends FragmentActivity{
 	private ImageView classification_iv;
 	private ImageView message_iv;
 	private ImageView cursor_iv;
-	private ImageView img_Float;
+	private ImageButton mainMenu_ib;
+	private ImageButton mainSearch_ib;
+	private ListView mainMenu_lv;
 	private int cursorWidth;
 	private int initPosition = 0;
 	private int currentIndex = 0;
-	private WindowManager mWindowManager = null;
-	private WindowManager.LayoutParams wmParams = null;
+	private PopupWindow mainMenu_pw;
+	private int screenWidth;
+	private int screenHeight;
+	private WindowManager main_wm;
+	private View popupView;
+	private MainMenuListViewAdapter mainMenu_adapter;
+	private List<String> mainMenuList;
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_xml);
-		fragments = new ArrayList<Fragment>();
-		fragments.add(new HomePageFragment());
-		fragments.add(new ClassificationFragment());
-		fragments.add(new MessageFragment());
-		mainFragment_adapter = new MainFragmentAdapter(getSupportFragmentManager(), fragments);
-		InitImageView();
+		Init();
 		InitCursor();
 		main_vp = (ViewPager)findViewById(R.id.main_viewpager);
 		main_vp.setAdapter(mainFragment_adapter);
 		main_vp.setCurrentItem(0);
 		main_vp.setOnPageChangeListener(new MyOnPageChangeListener());
+	
 	}
-	private void InitImageView(){
+	private void Init(){
+		fragments = new ArrayList<Fragment>();
+		mainMenuList = new ArrayList<String>();
+		fragments.add(new HomePageFragment());
+		fragments.add(new ClassificationFragment());
+		fragments.add(new MessageFragment());
+		mainMenuList.add("我的文章");
+		mainMenuList.add("我赞过的");
+		mainMenuList.add("设置");
+		mainMenuList.add("关于");
+		main_wm = this.getWindowManager();
+		screenWidth = main_wm.getDefaultDisplay().getWidth();
+		screenHeight = main_wm.getDefaultDisplay().getHeight();
+		popupView = getLayoutInflater().inflate(R.layout.main_menupopupwindow_xml, null);
+		mainFragment_adapter = new MainFragmentAdapter(getSupportFragmentManager(), fragments);
+		mainMenu_pw = new PopupWindow(popupView, screenWidth - 100, screenHeight - 100, true);
+		mainMenu_pw.setAnimationStyle(R.style.anim_menu_inandout);
+		mainMenu_pw.setBackgroundDrawable(new BitmapDrawable());
+		mainMenu_lv = (ListView)popupView.findViewById(R.id.main_menu_lv);
 		homePage_iv = (ImageView)findViewById(R.id.main_homepage_iv);
 		classification_iv = (ImageView)findViewById(R.id.main_classification_iv);
 		message_iv = (ImageView)findViewById(R.id.main_message_iv);
+		mainMenu_ib = (ImageButton)findViewById(R.id.main_menu_ib);
+		mainSearch_ib = (ImageButton)findViewById(R.id.main_search_bt);
+		mainMenu_adapter = new MainMenuListViewAdapter(MainActivity.this, mainMenuList);
 		homePage_iv.setOnClickListener(new MyOnClickListener(0));
 		classification_iv.setOnClickListener(new MyOnClickListener(1));
 		message_iv.setOnClickListener(new MyOnClickListener(2));
-		
+		mainMenu_ib.setOnClickListener(this);
+		mainMenu_lv.setAdapter(mainMenu_adapter);
+		mainMenu_pw.setOnDismissListener(this);
+		mainMenu_lv.setOnItemClickListener(this);
+		mainSearch_ib.setOnClickListener(this);
 	}
     private void InitCursor() {
     	cursor_iv = (ImageView) findViewById(R.id.main_cursor);
@@ -150,4 +193,47 @@ public class MainActivity extends FragmentActivity{
         public void onPageScrollStateChanged(int arg0) {
         }
     }
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch(v.getId()){
+			case R.id.main_menu_ib:
+				mainMenu_pw.showAtLocation(findViewById(R.id.main_menu_ib), Gravity.NO_GRAVITY, 0, 0);
+				setBackgroundDark();
+				Log.i("TAG", "show");
+				break;
+			case R.id.main_search_bt:
+				onSearchRequested(); 
+	            Intent intent = getIntent();                
+	            if (Intent.ACTION_SEARCH.equals(intent.getAction())) { 
+	                String query = intent.getStringExtra(SearchManager.QUERY); 
+	                //得到输入要搜索的内容，然后进行分析展示 
+	                Log.v("name>>>", "—–" + query);
+	            }
+	            break;
+		}
+	}
+	private void setBackgroundDark(){
+		WindowManager.LayoutParams lp = getWindow().getAttributes();
+		lp.alpha = 0.7f;
+		getWindow().setAttributes(lp);
+	}
+	@Override
+	public void onDismiss() {
+		// TODO Auto-generated method stub
+		WindowManager.LayoutParams lp = getWindow().getAttributes();
+		lp.alpha = 1f;
+		getWindow().setAttributes(lp);
+	}
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		// TODO Auto-generated method stub
+		switch(position){
+			case 0:
+				Intent intent = new Intent(MainActivity.this, MyArticleActivity.class);
+				startActivity(intent);
+		}
+	}
+	
 }

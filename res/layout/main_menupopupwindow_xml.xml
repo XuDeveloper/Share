@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="3" >
+    
+	<RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="1"
+	    android:background="@drawable/main_menu_bg">
+
+
+
+	    <TextView 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_alignParentLeft="true"
+	        android:text="这只不过是一个路人"
+	        android:textSize="20sp"
+	        android:layout_marginLeft="20px"	
+	        android:layout_marginBottom="20px"
+	        android:textColor="#ffffff"/>
+	</RelativeLayout>
+	<ListView 
+	    android:id="@+id/main_menu_lv"
+	    android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="2"
+	    android:divider="@null"
+	    android:background="#ffffff">
+	    
+	</ListView>
+</LinearLayout>
