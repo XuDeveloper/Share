@@ -3,67 +3,129 @@ package com.example.share.model;
 /**
  * 
  * @author Xu
- * ÿһ������������ģ��
  * 
  */
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class User implements Serializable {
 
-	private String mUserName;
-	private int mUserLogo;
-	private String mTag;
-	private String mTitle;
-	private String mContent;
-	private String mTime;
+	/**
+	 * 用户名
+	 */
+	private String mName;
 
-	public String getmUserName() {
-		return mUserName;
+	/**
+	 * 用户账号
+	 */
+	private String mAccount;
+
+	/**
+	 * 用户密码
+	 */
+	private String mPassWord;
+
+	/**
+	 * 用户头像
+	 */
+	private String mLogoUrl;
+
+	/**
+	 * 用户性别
+	 */
+	private String mSex;
+
+	/**
+	 * 用户个人简介
+	 */
+	private String mDescription;
+
+	/**
+	 * 用户邮箱
+	 */
+	private String mMail;
+
+	/**
+	 * 用户发表过的文章
+	 */
+	private ArrayList<ShareArticle> mArticles;
+
+	/**
+	 * 用户发表过的评论
+	 */
+	private ArrayList<Comment> mComments;
+
+	public String getmName() {
+		return mName;
 	}
 
-	public void setmUserName(String mUserName) {
-		this.mUserName = mUserName;
+	public void setmName(String mName) {
+		this.mName = mName;
 	}
 
-	public int getmUserLogo() {
-		return mUserLogo;
+	public String getmAccount() {
+		return mAccount;
 	}
 
-	public void setmUserLogo(int mUserLogo) {
-		this.mUserLogo = mUserLogo;
+	public void setmAccount(String mAccount) {
+		this.mAccount = mAccount;
 	}
 
-	public String getmTag() {
-		return mTag;
+	public String getmPassWord() {
+		return mPassWord;
 	}
 
-	public void setmTag(String mTag) {
-		this.mTag = mTag;
+	public void setmPassWord(String mPassWord) {
+		this.mPassWord = mPassWord;
 	}
 
-	public String getmTitle() {
-		return mTitle;
+	public String getmLogoUrl() {
+		return mLogoUrl;
 	}
 
-	public void setmTitle(String mTitle) {
-		this.mTitle = mTitle;
+	public void setmLogoUrl(String mLogoUrl) {
+		this.mLogoUrl = mLogoUrl;
 	}
 
-	public String getmContent() {
-		return mContent;
+	public String getmSex() {
+		return mSex;
 	}
 
-	public void setmContent(String mContent) {
-		this.mContent = mContent;
+	public void setmSex(String mSex) {
+		this.mSex = mSex;
 	}
 
-	public String getmTime() {
-		return mTime;
+	public String getmDescription() {
+		return mDescription;
 	}
 
-	public void setmTime(String mTime) {
-		this.mTime = mTime;
+	public void setmDescription(String mDescription) {
+		this.mDescription = mDescription;
+	}
+
+	public String getmMail() {
+		return mMail;
+	}
+
+	public void setmMail(String mMail) {
+		this.mMail = mMail;
+	}
+
+	public ArrayList<ShareArticle> getmArticles() {
+		return mArticles;
+	}
+
+	public void setmArticles(ArrayList<ShareArticle> mArticles) {
+		this.mArticles = mArticles;
+	}
+
+	public ArrayList<Comment> getmComments() {
+		return mComments;
+	}
+
+	public void setmComments(ArrayList<Comment> mComments) {
+		this.mComments = mComments;
 	}
 
 }

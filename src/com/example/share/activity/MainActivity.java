@@ -55,10 +55,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 	private int initPosition = 0;
 	private int currentIndex = 0;
 	private PopupWindow mainMenu_pw;
+	private PopupWindow search_pw;
 	private int screenWidth;
 	private int screenHeight;
 	private WindowManager main_wm;
 	private View popupView;
+	private View popupSearchView;
 	private MainMenuListViewAdapter mainMenu_adapter;
 	private List<String> mainMenuList;
 
@@ -81,21 +83,26 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 		fragments.add(new HomePageFragment());
 		fragments.add(new ClassificationFragment());
 		fragments.add(new MessageFragment());
-		mainMenuList.add("我的文章");
-		mainMenuList.add("我赞过的");
-		mainMenuList.add("设置");
-		mainMenuList.add("关于");
+		mainMenuList.add("鎴戠殑鏂囩珷");
+		mainMenuList.add("鎴戣禐杩囩殑");
+		mainMenuList.add("璁剧疆");
+		mainMenuList.add("鍏充簬");
 		main_wm = this.getWindowManager();
 		screenWidth = main_wm.getDefaultDisplay().getWidth();
 		screenHeight = main_wm.getDefaultDisplay().getHeight();
 		popupView = getLayoutInflater().inflate(
 				R.layout.main_menupopupwindow_xml, null);
+		popupSearchView = getLayoutInflater().inflate(
+				R.layout.main_searchdialog_xml, null);
 		mainFragment_adapter = new MainFragmentAdapter(
 				getSupportFragmentManager(), fragments);
 		mainMenu_pw = new PopupWindow(popupView, screenWidth - 100,
 				screenHeight - 100, true);
 		mainMenu_pw.setAnimationStyle(R.style.anim_menu_inandout);
 		mainMenu_pw.setBackgroundDrawable(new BitmapDrawable());
+		search_pw = new PopupWindow(popupSearchView, screenWidth,
+				screenHeight, true);
+		search_pw.setBackgroundDrawable(new BitmapDrawable());
 		mainMenu_lv = (ListView) popupView.findViewById(R.id.main_menu_lv);
 		homePage_iv = (ImageView) findViewById(R.id.main_homepage_iv);
 		classification_iv = (ImageView) findViewById(R.id.main_classification_iv);
@@ -110,6 +117,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 		mainMenu_ib.setOnClickListener(this);
 		mainMenu_lv.setAdapter(mainMenu_adapter);
 		mainMenu_pw.setOnDismissListener(this);
+		search_pw.setOnDismissListener(this);
+		search_pw.setOutsideTouchable(true);
 		mainMenu_lv.setOnItemClickListener(this);
 		mainSearch_ib.setOnClickListener(this);
 	}
@@ -214,13 +223,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 			Log.i("TAG", "show");
 			break;
 		case R.id.main_search_bt:
-			onSearchRequested();
-			Intent intent = getIntent();
-			if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-				String query = intent.getStringExtra(SearchManager.QUERY);
-				// 得到输入要搜索的内容，然后进行分析展示
-				Log.v("name>>>", "—–" + query);
-			}
+			search_pw.showAtLocation(findViewById(R.id.main_search_bt),
+					Gravity.TOP, 0, 0);
+			setBackgroundDark();
+			
 			break;
 		}
 	}

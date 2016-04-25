@@ -1,7 +1,7 @@
 package com.example.share.util;
 
 /**
- * ´ËÀàÉèÖÃFloatingActionButtonµÄÒ»Ğ©ÊôĞÔ
+ * FloatingActionButtonè®¾ç½®ç›¸å…³å±æ€§
  */
 
 import android.content.Context;
