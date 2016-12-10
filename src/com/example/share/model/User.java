@@ -8,6 +8,9 @@ package com.example.share.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+
+import android.graphics.Bitmap;
 
 public class User implements Serializable {
 
@@ -29,7 +32,7 @@ public class User implements Serializable {
 	/**
 	 * 用户头像
 	 */
-	private String mLogoUrl;
+	private Bitmap mLogo;
 
 	/**
 	 * 用户性别
@@ -49,12 +52,14 @@ public class User implements Serializable {
 	/**
 	 * 用户发表过的文章
 	 */
-	private ArrayList<ShareArticle> mArticles;
+	private List<ShareArticle> mArticles;
 
 	/**
 	 * 用户发表过的评论
 	 */
-	private ArrayList<Comment> mComments;
+	private List<Comment> mComments;
+	
+	private List<ShareArticle> mLikeArticles;
 
 	public String getmName() {
 		return mName;
@@ -80,12 +85,12 @@ public class User implements Serializable {
 		this.mPassWord = mPassWord;
 	}
 
-	public String getmLogoUrl() {
-		return mLogoUrl;
+	public Bitmap getmLogo() {
+		return mLogo;
 	}
 
-	public void setmLogoUrl(String mLogoUrl) {
-		this.mLogoUrl = mLogoUrl;
+	public void setmLogo(Bitmap mLogo) {
+		this.mLogo = mLogo;
 	}
 
 	public String getmSex() {
@@ -112,20 +117,28 @@ public class User implements Serializable {
 		this.mMail = mMail;
 	}
 
-	public ArrayList<ShareArticle> getmArticles() {
+	public List<ShareArticle> getmArticles() {
 		return mArticles;
 	}
 
-	public void setmArticles(ArrayList<ShareArticle> mArticles) {
+	public void setmArticles(List<ShareArticle> mArticles) {
 		this.mArticles = mArticles;
 	}
 
-	public ArrayList<Comment> getmComments() {
+	public List<Comment> getmComments() {
 		return mComments;
 	}
 
-	public void setmComments(ArrayList<Comment> mComments) {
+	public void setmComments(List<Comment> mComments) {
 		this.mComments = mComments;
+	}
+
+	public List<ShareArticle> getmLikeArticles() {
+		return mLikeArticles;
+	}
+
+	public void setmLikeArticles(List<ShareArticle> mLikeArticles) {
+		this.mLikeArticles = mLikeArticles;
 	}
 
 }

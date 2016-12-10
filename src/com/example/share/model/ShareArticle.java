@@ -3,8 +3,12 @@ package com.example.share.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class ShareArticle implements Serializable {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class ShareArticle implements Serializable, Comparable<ShareArticle>{
 
 	/**
 	 * 文章标题
@@ -24,7 +28,7 @@ public class ShareArticle implements Serializable {
 	/**
 	 * 发布文章时间
 	 */
-	private Date mDate;
+	private String mDate;
 
 	/**
 	 * 发布文章的作者名字
@@ -39,13 +43,17 @@ public class ShareArticle implements Serializable {
 	/**
 	 * 点赞数目
 	 */
-	private ArrayList<Like> mLikes;
+	private List<Like> mLikes;
 
 	/**
 	 * 评论
 	 */
-	private ArrayList<Comment> mComments;
-
+	private List<Comment> mComments;
+	
+	private double mScore;
+	public ShareArticle(){
+		
+	}
 	public String getmTitle() {
 		return mTitle;
 	}
@@ -70,11 +78,11 @@ public class ShareArticle implements Serializable {
 		this.mContent = content;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return mDate;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.mDate = date;
 	}
 
@@ -94,20 +102,38 @@ public class ShareArticle implements Serializable {
 		this.mUserLogoUrl = mUserLogoUrl;
 	}
 
-	public ArrayList<Comment> getmComments() {
+	public List<Comment> getmComments() {
 		return mComments;
 	}
 
-	public void setmComments(ArrayList<Comment> mComments) {
+	public void setmComments(List<Comment> mComments) {
 		this.mComments = mComments;
 	}
 
-	public ArrayList<Like> getmLikes() {
+	public List<Like> getmLikes() {
 		return mLikes;
 	}
 
-	public void setmLikes(ArrayList<Like> mLikes) {
+	public void setmLikes(List<Like> mLikes) {
 		this.mLikes = mLikes;
 	}
+	public void setScore(double mScore){
+		this.mScore = mScore;
+	}
+	public double getScore(){
+		return mScore;
+	}
+	@Override
+	public int compareTo(ShareArticle another) {
+		// TODO Auto-generated method stub
+		if((mScore - another.mScore) == 0){
+			return 0;
+		}else if((mScore - another.mScore) < 0){
+			return 1;
+		}else{
+			return -1;
+		}
+	}
+
 
 }

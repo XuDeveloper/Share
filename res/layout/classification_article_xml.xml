@@ -2,20 +2,46 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    xmlns:fab="http://schemas.android.com/apk/res-auto" >
 
     <ListView
         android:id="@+id/classification_article_lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
     </ListView>
-
-    <com.example.share.ui.FloatingActionButton
-        android:id="@+id/classification_article_fab"
+	<com.example.share.ui.FloatingActionMenu 
+        android:id="@+id/article_fam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_add_white_24dp" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        fab:menu_icon="@drawable/fab_add"
+        fab:menu_colorNormal="@color/accent"
+        fab:menu_colorPressed="@color/accent_pressed"
+        fab:menu_colorRipple="@color/ripple"
+		fab:menu_labels_showAnimation="@anim/jump_from_down"
+        fab:menu_labels_hideAnimation="@anim/jump_to_down"
+        >
+        <com.example.share.ui.FloatingActionButton
+	        android:id="@+id/article_article_fab"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="bottom|right"
+	        android:layout_margin="16dp"
+	        android:src="@drawable/article"
+			fab:fab_colorNormal="@color/white"/>
+        <com.example.share.ui.FloatingActionButton
+	        android:id="@+id/article_broadcast_fab"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/broadcast"
+	        
+			fab:fab_colorNormal="@color/white"/>
+
+    </com.example.share.ui.FloatingActionMenu>
+    
+     
 
 </FrameLayout>

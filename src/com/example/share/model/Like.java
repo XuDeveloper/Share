@@ -3,13 +3,17 @@ package com.example.share.model;
 import java.io.Serializable;
 import java.sql.Date;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
+
 public class Like implements Serializable {
 
 	/**
 	 * 点赞人的姓名
 	 */
 	private String mUserName;
-
+	
 	/**
 	 * 点赞人的头像
 	 */
@@ -18,8 +22,8 @@ public class Like implements Serializable {
 	/**
 	 * 点赞的时间
 	 */
-	private Date mDate;
-
+	private String mDate;
+	private User mUser;
 	public String getmUserName() {
 		return mUserName;
 	}
@@ -36,12 +40,21 @@ public class Like implements Serializable {
 		this.mUserLogoUrl = mUserLogoUrl;
 	}
 
-	public Date getmDate() {
+	public String getmDate() {
 		return mDate;
 	}
 
-	public void setmDate(Date mDate) {
+	public void setmDate(String mDate) {
 		this.mDate = mDate;
 	}
+
+	public User getmUser() {
+		return mUser;
+	}
+
+	public void setmUser(User mUser) {
+		this.mUser = mUser;
+	}
+
 
 }

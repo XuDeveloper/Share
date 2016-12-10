@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="8.5" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/myarticle_ll_bg" >
+
+        <ImageButton
+            android:id="@+id/share_detail_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30px"
+            android:background="#ffffff"
+            android:src="@drawable/cyan_back" />
+
+        <ImageButton
+            android:id="@+id/share_ib"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30px"
+            android:background="#ffffff"
+            android:src="@drawable/share" />
+
+        <ImageButton
+            android:id="@+id/agree_ib"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30px"
+            android:layout_toLeftOf="@id/share_ib"
+            android:background="#ffffff"
+            android:src="@drawable/agree" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/share_detail_lv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6.7" >
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:weightSum="5" >
+
+        <EditText
+            android:id="@+id/share_detail_comment_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="4"
+            android:background="@drawable/edit_text" />
+
+        <Button
+            android:id="@+id/share_detail_comment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:text="评论"
+            android:textColor="#04CFB3"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</LinearLayout>

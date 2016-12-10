@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="8" >
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.2">
+        <ImageView 
+            android:id="@+id/comment_user_logo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/user_logo"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"/>
+        <TextView 
+            android:id="@+id/comment_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我又是个路人"
+            android:layout_toRightOf="@id/comment_user_logo"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#BCBCBC"/>
+        <TextView 
+            android:id="@+id/commnet_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016年4月1日16:33"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:textSize="10sp"
+            android:textColor="#BCBCBC"/>
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/comment_content"
+            android:text="你说的都对，可是我还是拿不到4.0"
+            android:layout_below="@id/comment_user_logo"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+
+    </RelativeLayout>
+    
+
+</LinearLayout>

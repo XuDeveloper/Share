@@ -3,11 +3,15 @@ package com.example.share.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.androidpn.client.ServiceManager;
+
 import com.example.share.R;
 import com.example.share.adapter.MainFragmentAdapter;
 import com.example.share.adapter.MainMenuListViewAdapter;
 
+import com.example.share.data.Data;
 import com.example.share.fragment.*;
+import com.example.share.ui.FloatingActionMenu;
 
 import android.app.SearchManager;
 import android.content.Intent;
@@ -63,6 +67,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 	private View popupSearchView;
 	private MainMenuListViewAdapter mainMenu_adapter;
 	private List<String> mainMenuList;
+	private ImageView mainMenuUserLogo;
+	public static Data mData = new Data();
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -74,14 +81,26 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 		main_vp.setAdapter(mainFragment_adapter);
 		main_vp.setCurrentItem(0);
 		main_vp.setOnPageChangeListener(new MyOnPageChangeListener());
+		
+		Log.i("MainActivity", "onCreate");
+		// Start the service
+        ServiceManager serviceManager = new ServiceManager(this);
+        serviceManager.setNotificationIcon(R.drawable.share);
+        serviceManager.startService();
 
 	}
 
 	private void Init() {
+		mData.init();
+		Bundle bundle = getIntent().getBundleExtra("ARTICLE");
 		fragments = new ArrayList<Fragment>();
 		mainMenuList = new ArrayList<String>();
-		fragments.add(new HomePageFragment());
-		fragments.add(new ClassificationFragment());
+		HomePageFragment mHomePageFragment = new HomePageFragment();
+		ClassificationFragment mClassificationFragment = new ClassificationFragment();
+		mClassificationFragment.setArguments(bundle);
+		mHomePageFragment.setArguments(bundle);
+		fragments.add(mHomePageFragment);
+		fragments.add(mClassificationFragment);
 		fragments.add(new MessageFragment());
 		mainMenuList.add("我的文章");
 		mainMenuList.add("我赞过的");
@@ -101,9 +120,11 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 		mainMenu_pw.setAnimationStyle(R.style.anim_menu_inandout);
 		mainMenu_pw.setBackgroundDrawable(new BitmapDrawable());
 		search_pw = new PopupWindow(popupSearchView, screenWidth,
-				screenHeight, true);
+				screenHeight / 7, true);
+		search_pw.setAnimationStyle(R.style.anim_search_inandout);
 		search_pw.setBackgroundDrawable(new BitmapDrawable());
 		mainMenu_lv = (ListView) popupView.findViewById(R.id.main_menu_lv);
+		mainMenuUserLogo = (ImageView) popupView.findViewById(R.id.main_menu_user_logo);
 		homePage_iv = (ImageView) findViewById(R.id.main_homepage_iv);
 		classification_iv = (ImageView) findViewById(R.id.main_classification_iv);
 		message_iv = (ImageView) findViewById(R.id.main_message_iv);
@@ -121,6 +142,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 		search_pw.setOutsideTouchable(true);
 		mainMenu_lv.setOnItemClickListener(this);
 		mainSearch_ib.setOnClickListener(this);
+		mainMenuUserLogo.setOnClickListener(this);
 	}
 
 	private void InitCursor() {
@@ -227,6 +249,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 					Gravity.TOP, 0, 0);
 			setBackgroundDark();
 			
+			break;
+		case R.id.main_menu_user_logo:
+			Intent intent = new Intent(this, AboutMeActivity.class);
+			startActivity(intent);
 			break;
 		}
 	}

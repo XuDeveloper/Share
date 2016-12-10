@@ -42,7 +42,13 @@
         <RelativeLayout 
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"></RelativeLayout>
+            android:layout_weight="2">
+            <ImageView 
+                android:id="@+id/user_information_logo"
+                android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                android:src="@drawable/user_logo"/>
+        </RelativeLayout>
         <RelativeLayout 
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -54,6 +60,13 @@
                 android:text="我又是个路人"
                 android:textSize="22sp"
                 android:layout_centerInParent="true"/>
+            <ImageView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user_sex_girl"
+                android:layout_toRightOf="@id/userinformation_name"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"/>
         </RelativeLayout>
         <LinearLayout 
             android:layout_width="match_parent"
@@ -73,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
-                    android:textColor="@color/grey"
+                    android:textColor="#BCBCBC"
                     android:layout_alignParentTop="true"/>
                 <TextView 
                     android:text="10篇"
@@ -94,7 +107,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
-                    android:textColor="@color/grey"
+                    android:textColor="#BCBCBC"
                     android:layout_alignParentTop="true"/>
                 <TextView 
                     android:text="10篇"
@@ -126,4 +139,17 @@
     
 
 	</LinearLayout>
+	<RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="3">
+	    <Button 
+	        android:layout_width="match_parent"
+	        android:layout_height="40dp"
+	        android:layout_alignParentBottom="true"
+	        android:text="注销"
+	        android:background="#ffffff"
+	        android:textSize="20sp"
+	        android:textColor="#FF4081"/>
+	</RelativeLayout>
 </LinearLayout>

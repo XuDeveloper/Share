@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ClassificationFragment extends Fragment {
+public class ClassificationFragment extends Fragment implements OnClickListener{
 	ImageView classification_article_iv;
 	ImageView classification_broadcast_iv;
 	TextView classification_article_tv;
@@ -32,57 +32,64 @@ public class ClassificationFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.classification_xml,
 				container, false);
-		classification_article_iv = (ImageView) rootView
+		Log.i("onCreateView", "11111");
+		initView(rootView);
+
+		
+
+		return rootView;
+	}
+	private void initView(View view){
+		Bundle bundle = getArguments();
+
+		classification_article_iv = (ImageView) view
 				.findViewById(R.id.classfication_article_iv);
-		classification_broadcast_iv = (ImageView) rootView
+		classification_broadcast_iv = (ImageView) view
 				.findViewById(R.id.classfication_broadcast_iv);
-		classification_article_tv = (TextView) rootView
+		classification_article_tv = (TextView) view
 				.findViewById(R.id.classfication_article_tv);
-		classification_broadcast_tv = (TextView) rootView
+		classification_broadcast_tv = (TextView) view
 				.findViewById(R.id.classfication_broadcast_tv);
 		classification_articleFragment = new Classification_ArticleFragment();
+		if(bundle != null){
+			classification_articleFragment.setArguments(bundle);
+		}
 		classification_broadcastFragment = new Classification_BroadcastFragment();
 		classification_ft = getActivity().getSupportFragmentManager()
 				.beginTransaction();
 		classification_ft.replace(R.id.classification_fragment,
-				new Classification_ArticleFragment());
+				classification_articleFragment);
 		classification_ft.commit();
-		if (getActivity() != null) {
-			Log.i("TAG", "hahah");
+		classification_article_tv.setOnClickListener(this);
+		classification_broadcast_tv.setOnClickListener(this);
+	}
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch(v.getId()){
+		case R.id.classfication_article_tv:
+			classification_ft = getActivity().getSupportFragmentManager()
+			.beginTransaction();
+			classification_ft.replace(R.id.classification_fragment,
+					new Classification_ArticleFragment());
+			classification_ft.commit();
+			classification_article_iv.setVisibility(0);
+			classification_article_tv.setTextColor(0xFFffffff);
+			classification_broadcast_iv.setVisibility(4);
+			classification_broadcast_tv.setTextColor(0xFFa2a2a2);
+			break;
+		case R.id.classfication_broadcast_tv:
+			classification_ft = getActivity().getSupportFragmentManager()
+			.beginTransaction();
+			classification_ft.replace(R.id.classification_fragment,
+					new Classification_BroadcastFragment());
+			classification_ft.commit();
+			classification_article_iv.setVisibility(4);
+			classification_article_tv.setTextColor(0xFFa2a2a2);
+			classification_broadcast_iv.setVisibility(0);
+			classification_broadcast_tv.setTextColor(0xFFffffff);
+			break;
 		}
-		classification_article_tv.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				classification_ft = getActivity().getSupportFragmentManager()
-						.beginTransaction();
-				classification_ft.replace(R.id.classification_fragment,
-						new Classification_ArticleFragment());
-				classification_ft.commit();
-				classification_article_iv.setVisibility(0);
-				classification_article_tv.setTextColor(0xFFffffff);
-				classification_broadcast_iv.setVisibility(4);
-				classification_broadcast_tv.setTextColor(0xFFa2a2a2);
-			}
-		});
-		classification_broadcast_tv.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				classification_ft = getActivity().getSupportFragmentManager()
-						.beginTransaction();
-				classification_ft.replace(R.id.classification_fragment,
-						new Classification_BroadcastFragment());
-				classification_ft.commit();
-				classification_article_iv.setVisibility(4);
-				classification_article_tv.setTextColor(0xFFa2a2a2);
-				classification_broadcast_iv.setVisibility(0);
-				classification_broadcast_tv.setTextColor(0xFFffffff);
-			}
-		});
-		return rootView;
 	}
 
 }

@@ -3,6 +3,10 @@ package com.example.share.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
+
 public class Comment implements Serializable {
 
 	/**
@@ -23,7 +27,7 @@ public class Comment implements Serializable {
 	/**
 	 * 评论时间
 	 */
-	private Date mDate;
+	private String mDate;
 	
 	/**
 	 * 回复
@@ -54,11 +58,11 @@ public class Comment implements Serializable {
 		this.mComment = mComment;
 	}
 
-	public Date getmDate() {
+	public String getmDate() {
 		return mDate;
 	}
 
-	public void setmDate(Date mDate) {
+	public void setmDate(String mDate) {
 		this.mDate = mDate;
 	}
 
@@ -69,6 +73,9 @@ public class Comment implements Serializable {
 	public void setmResponse(Response mResponse) {
 		this.mResponse = mResponse;
 	}
+
+
+
 	
 	
 

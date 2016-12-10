@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10" >
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:weightSum="4"
+        android:orientation="vertical"
+        android:background="@color/accent">
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5">
+            <ImageButton 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white__back"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"/>
+            <Button 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发表"
+                android:textSize="20sp"
+                android:background="@color/accent"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:textColor="#BCBCBC"/>
+            
+        </RelativeLayout>
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:text="标题"
+            android:textColor="#BCBCBC"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"/>
+        <EditText 
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:hint="取一个好的标题"
+            android:background="@color/accent"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textColorHint="#BCBCBC"
+            android:layout_marginLeft="10dp"/>
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#BCBCBC"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+        
+    </LinearLayout>
+    <EditText 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:hint="从这里开始告诉别人你的经验..."
+        android:textColorHint="#BCBCBC"
+        android:gravity="top"
+        />
+
+</LinearLayout>

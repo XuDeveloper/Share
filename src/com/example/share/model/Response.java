@@ -3,6 +3,10 @@ package com.example.share.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
+
 public class Response implements Serializable {
 
 	/**
@@ -23,7 +27,7 @@ public class Response implements Serializable {
 	/**
 	 * 回复时间
 	 */
-	private Date mDate;
+	private String mDate;
 
 	public String getmUserName() {
 		return mUserName;
@@ -49,12 +53,14 @@ public class Response implements Serializable {
 		this.mResponse = mResponse;
 	}
 
-	public Date getmDate() {
+	public String getmDate() {
 		return mDate;
 	}
 
-	public void setmDate(Date mDate) {
+	public void setmDate(String mDate) {
 		this.mDate = mDate;
 	}
+
+
 
 }
