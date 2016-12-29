@@ -2,6 +2,10 @@ package com.example.share.activity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 import com.example.share.R;
 import com.example.share.adapter.ChatListViewAdapter;
@@ -33,12 +37,14 @@ public class ChatActivity extends Activity implements OnClickListener {
 	private List<String> mMessageList = new ArrayList<String>();
 	private ChatListViewAdapter mChatAdapter;
 	private ClientThread mClientThread;
+	private ExecutorService executorService;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.chat_xml);
 		initView();
+		executorService = Executors.newSingleThreadExecutor();
 	}
 
 	private void initView() {
@@ -67,7 +73,8 @@ public class ChatActivity extends Activity implements OnClickListener {
 		};
 		mClientThread = new ClientThread(mHandler);
 		Log.i("connect", "3");
-		new Thread(mClientThread).start();
+		executorService.submit(mClientThread);
+//		new Thread(mClientThread).start();
 		Log.i("connect", "4");
 	}
 
